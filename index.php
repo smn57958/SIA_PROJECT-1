@@ -1,4 +1,4 @@
-#-------------------------------------------------------------------------------
+<!--#-------------------------------------------------------------------------------
 # Copyright (C) 2017
 # Authors:
 # Sohan Nipunage <smn57958@uga.edu>
@@ -20,18 +20,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
+-->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>AIS_project-1</title>
 </head>
-    <body>
-    <p>This page uses frames. The current browser you are using does not support frames.</p>
+<body>
+	<p>This page uses frames. The current browser you are using does not
+		support frames.</p>
     <?php
-$x=7;
-$y=15;
-echo "Sum is :".($x+$y);
-	?>
+    $x = 7;
+    $y = 15;
+    echo "Sum is :" . ($x + $y);
+    ?>
     </body>
 </html>
