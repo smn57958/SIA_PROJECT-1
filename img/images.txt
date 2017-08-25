@@ -1,0 +1,3 @@
+add all images in this folder
+
+ex. background-image.jpg
