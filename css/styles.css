@@ -1,0 +1,212 @@
+/*
+--#-------------------------------------------------------------------------------
+# Copyright (C) 2017
+# Authors:
+# Sohan Nipunage <smn57958@uga.edu>
+# Dnyanada Shirsat <dds69748@uga.edu>
+# Akshay Agashe <aa84678@uga.edu>
+# Niyati Shah <nhs01063@uga.edu>
+# 
+# *For using this project anywhere, contact authors for permission*
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
+*/
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+.bwh {
+	background-color: black;
+	color: white;
+	border-radius: 10px;
+}
+
+.auth {
+	font-family: 'Kaushan Script', cursive;
+	font-size: 30%;
+	float: right;
+	padding-right: 20px;
+	padding-top: 20px;
+}
+
+.cop {
+	font-size: 8px;
+}
+
+body {
+	text-align: center;
+	margin: 0px 2px 2px 2px;
+	padding: 0;
+}
+
+#header {
+	width: 100%;
+	height: 300px;
+	background-image: url("../img/header-bg.jpg");
+	box-shadow: 0px 10px 8px #b5b5b5;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
+	font-size: 350%;
+	line-height: 120px;
+}
+
+#connection {
+	width: 100%;
+	height: auto;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+.htext {
+	padding-top: 80px;
+	text-shadow: 0px -2px #A8A8A8;
+	text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.5);
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+}
+
+#main {
+	width: 100%;
+	height: auto;
+	min-height: 100px;
+	background-image: url("actors.jpg");
+	margin-top: 15px;
+	box-shadow: 0px 10px 10px #b5b5b5;
+	font-family: 'Oswald', sans-serif;
+	font-size: 100%;
+	margin-top: 50px;
+	line-height: 120%;
+}
+
+button {
+	background-color: #f44336;
+	border: none;
+	color: white;
+	padding: 5px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 10px;
+	-webkit-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+
+button:hover {
+	background-color: black; /* Green */
+	color: hotpink;
+}
+
+button:focus {
+	outline: 0;
+}
+
+#qtitle {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 160%;
+	line-height: 150%;
+}
+
+#degrees {
+	display: none;
+}
+
+#deg {
+	display: none;
+	margin: auto;
+}
+
+table {
+	margin: auto;
+}
+
+.firstDegree, .secondDegree, .thirdDegree, .fourthDegree {
+	width: 100%;
+	height: auto;
+	min-height: 100px; //
+	background-color: green;
+	margin-top: 15px;
+	box-shadow: 0px 10px 10px #b5b5b5;
+	font-family: 'Oswald', sans-serif;
+	font-size: 100%;
+}
+
+#footer {
+	width: 100%;
+	height: 150px;
+	background-image: url("../img/footer-background.jpg");
+	background-size: 600px 600px;
+	margin-top: 15px;
+	box-shadow: 0px 10px 8px #b5b5b5;
+	font-family: 'Inconsolata', monospace;
+	line-height: 150%;
+	color: white;
+	text-shadow: 0px -2px #303030;
+	font-size: 100%;
+	padding-top: 50px;
+}
+
+#footer p {
+	background-color: black;
+	color: white;
+	border-radius: 10px;
+}
+
+input[type=text] {
+	width: 130px;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: white;
+	background-image: url('searchicon.png');
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+	width: 200px;
+}
+
+#mailto {
+	text-decoration: none;
+	color: hotpink;
+	background-color: black;
+	border-radius: 25px;
+}
+
+tr:nth-child(even) {
+	background-color: #000000;
+	color: white;
+}
+
+.fuschia {
+	background-color: #832850;
+	color: white;
+	border-radius: 10px;
+}
+
+#underline {
+	text-decoration: underline;
+}

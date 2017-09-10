@@ -1,6 +1,8 @@
-# Project -1 
+# Project -1 Client and Server-side Web IS Development
 
-One Paragraph of project description goes here
+This assignment focuses on querying relational databases using SQL in PHP along with HTML/CSS.
+The Six Degrees of Kevin Bacon is a game based upon the theory that every actor can be connected to actor Kevin Bacon by a chain of movies no more than 6 in length. Most, but not all, can reach him in 6 steps. 12% of all actors cannot reach him at all.
+Your task for this assignment is to write the HTML/CSS and PHP code for a web site called MyMDb that mimics part of the popular IMDb movie database site. Your site will show the movies in which another actor has appeared with Kevin Bacon (if you prefer, you may use another actor rather than Kevin Bacon as the center point, so long as that actor is in your database and has many connections to other actors).
 
 ## Getting Started
 
@@ -11,77 +13,70 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+XAMPP - Apache Server
+```
+```
+MySQL-Server
+```
+```
+XAMPP - Apache Server
 ```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
 
 ```
-Give the example
+Install XAMPP and go to the local directory 'htdocs' of XAMPP
 ```
-
-And repeat
+[Windows] C:\xampp\htdocs\ 
 
 ```
-until finished
+Copy 'CodeBusters.zip' to C:\xampp\htdocs\
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
+```
+Extract In the same folder under 'CodeBusters'
+```
+```
+Now the directory should be 'C:\xampp\htdocs\CodeBusters\'
+```
+```
+Start MySQL server
+```
+```
+Open Browser and navigate to localhost/CodeBusters/
+```
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+1. As you open the link, the browser will prompt you for username,password and database name
+(These details are for "MYSQL" connection)
+Default values : username: root password:test123 database name: imdb
 
-Explain what these tests test and why
+2. Once the connection is successfull, page will specify that the connection was successful at the very top of the page.
 
-```
-Give an example
-```
+3. Now type in the "First Name" of your favorite actor that you wish to compare with actor Kevin Bacon.
+(Example : John)
 
-### And coding style tests
+4. Now click on "Search" and the page will provide you a list of all actors.
 
-Explain what these tests test and why
+5. Select your favorite actor from the given list.
 
-```
-Give an example
-```
+6. Now click on "Degree it!" button to get the outputs.
 
-## Deployment
+7. Keep scrolling down to see the outputs of the executed queries in the same page.
 
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+8. For another actor, simply scroll up to the first question to select your favorite actor (Step 3) and repeat.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Sohan M. Nipunage**	 - 	[smn57958@uga.edu](mailto:smn57958@uga.edu)
+* **Dnyanada Shirsat** 	 -	[dds69748@uga.edu](mailto:dds69748@uga.edu)
+* **Akshay Agashe** 	 - 	[aa84678@uga.edu](mailto:aa84678@uga.edu)
+* **Niyati Shah** 		 - 	[nhs01063@uga.edu](mailto:nhs01063@uga.edu)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+This project is licensed under the GNU General Public License.

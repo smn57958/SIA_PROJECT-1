@@ -1,3 +1,0 @@
-add libraries/resources in this folder for imports
-
-ex. mysql.jar 
