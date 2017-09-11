@@ -24,6 +24,7 @@
  * #-------------------------------------------------------------------------------
  */
 mysqli_report(MYSQLI_REPORT_STRICT);
+error_reporting(0);
 
 class connector
 {
@@ -61,7 +62,7 @@ class connector
         if (mysqli_connect_errno()) {
             echo "<div class='connection' style='background-color:red;border-radius:10px;color:white;'>Connection Failed</div>";
         } else {
-            echo "<div class='connection' style='background-color:green;border-radius:10px;color:white;'>Connected successfully!" . self::$server . "</div>";
+            echo "<div class='connection' style='background-color:green;border-radius:10px;color:white;'>Connected successfully!</div>";
         }
     }
 

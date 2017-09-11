@@ -23,15 +23,27 @@
  * # along with this program. If not, see <http://www.gnu.org/licenses/>.
  * #-------------------------------------------------------------------------------
  */
+error_reporting(0);
 include ("db_handler.php");
 connector::connect();
 $q = ($_GET['q']);
 $sql = "SELECT * FROM ACTORS WHERE first_name LIKE'" . $q . "%'";
 $result = mysqli_query(connector::$connection, $sql);
-echo "Select one of the actors from the list : <select id='actorsOpt'>";
+if($result)
+{
+	if($result->num_rows ===0)
+	{
+		echo "Actor ".$q." not found, retry";
+	}
+	else
+	{
+		echo "Select one of the actors from the list : <select id='actorsOpt'>";
 while ($row = mysqli_fetch_array($result)) {
     echo "<option value=" . $row['id'] . ">" . $row['first_name'] . " " . $row['last_name'] . "</option>";
 }
 echo "</select>";
+	}
+}
+
 connector::disconnect();
 ?>

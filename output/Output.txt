@@ -1,0 +1,1494 @@
+CSCI 8380 : ADVANCE INFORMATION SYSTEMS
+PROJECT 1
+OUTPUT FILE : Consisting of MySQL Queries and their output.
+GROUP: CodeBusters
+
+Query 1:
+
+Find all movies in which the actor performed with Kevin Bacon.
+
+SELECT DISTINCT m.name
+, m.year
+FROM actors a, roles r, movies m
+
+WHERE a.id=r.actor_id AND m.id=r.movie_id AND a.id='' AND r.movie_id IN (SELECT r1.movie_id 
+																				FROM roles r1
+															             						WHERE r1.actor_id=22591)
+ORDER BY m.year DESC, m.name ASC;
+ 
+Output for Query 1:
+Animal House	1978
+
+Query 2:
+
+Find actors who didn’t performed with Kevin Bacon in the sam movie, but performed with a third actor, who was in the same movie with Kevin Bacon.
+
+SELECT a1.first_name, a1.last_name, m.name
+
+FROM actors a1, roles r2, movies m
+
+WHERE a1.id=r2.actor_id AND m.id=r2.movie_id AND r2.actor_id <> 22591 AND r2.movie_id IN (SELECT r3.movie_id 
+																				  FROM roles r3) AND r2.movie_id NOT IN (SELECT r.movie_id
+																				       FROM roles r
+																					       WHERE r.movie_id IN (SELECT r1.movie_id 
+																			             FROM roles r1
+																				             WHERE r1.actor_id=22591))
+ORDER BY m.year DESC, m.name ASC;
+
+Output for Query 2:
+
+Dean	Alexandrou	Batman Begins	2005
+Joey	Ansah	Batman Begins	2005
+Christian	Bale	Batman Begins	2005
+Abdul	Blackmanwest	Batman Begins	2005
+Mark	Boone Junior	Batman Begins	2005
+Tim (I)	Booth	Batman Begins	2005
+Morne	Botes	Batman Begins	2005
+Richard	Brake	Batman Begins	2005
+Cliff	Bura	Batman Begins	2005
+Michael (I)	Caine	Batman Begins	2005
+Michael (XIII)	Coleman	Batman Begins	2005
+Phill	Curr	Batman Begins	2005
+Ray	Donn	Batman Begins	2005
+Barry	Dowden	Batman Begins	2005
+Freedom	Eche	Batman Begins	2005
+Charles (VI)	Edwards	Batman Begins	2005
+Jonathan D.	Ellis	Batman Begins	2005
+James	Embree	Batman Begins	2005
+Jon	Foo	Batman Begins	2005
+Morgan (I)	Freeman	Batman Begins	2005
+John	Ghaly	Batman Begins	2005
+Dwight	Gooden	Batman Begins	2005
+Tamer	Hassan	Batman Begins	2005
+Rutger	Hauer	Batman Begins	2005
+Scott	Hinds	Batman Begins	2005
+Larry (I)	Holden	Batman Begins	2005
+Andrew	Houghton	Batman Begins	2005
+Michael	Hovinga	Batman Begins	2005
+Keith	How	Batman Begins	2005
+John (III)	Judd	Batman Begins	2005
+John	Kazek	Batman Begins	2005
+J.D.	Kelleher	Batman Begins	2005
+Charlie	Kranz	Batman Begins	2005
+David	Legeno	Batman Begins	2005
+Gus	Lewis	Batman Begins	2005
+Jeff	Lipman	Batman Begins	2005
+Noah	Margetts	Batman Begins	2005
+Nicholas	Marino	Batman Begins	2005
+James	Mawhinney	Batman Begins	2005
+Colin (I)	McFarlane	Batman Begins	2005
+Matt (II)	Miller	Batman Begins	2005
+Cillian	Murphy	Batman Begins	2005
+Gerard (II)	Murphy	Batman Begins	2005
+Liam	Neeson	Batman Begins	2005
+Gary	Oldman	Batman Begins	2005
+Linus	Roache	Batman Begins	2005
+Rade	Serbedzija	Batman Begins	2005
+Kent	Shelton	Batman Begins	2005
+Mark	Straker	Batman Begins	2005
+Mark (I)	Strange	Batman Begins	2005
+Ken (I)	Watanabe	Batman Begins	2005
+Tom (I)	Wilkinson	Batman Begins	2005
+Derek	Yardley	Batman Begins	2005
+Alexandra	Bastedo	Batman Begins	2005
+Barbara (II)	Gordon	Batman Begins	2005
+Rachel	Hammond	Batman Begins	2005
+Katie	Holmes	Batman Begins	2005
+Bev	Lillywhite	Batman Begins	2005
+Emma	Lockhart	Batman Begins	2005
+Catherine	Porter	Batman Begins	2005
+Lucy	Russell	Batman Begins	2005
+Sara	Stewart	Batman Begins	2005
+Geoffrey	Arend	Garden State	2004
+Joe	Bacino	Garden State	2004
+Zach	Braff	Garden State	2004
+Alex	Burns	Garden State	2004
+Chris	Carley	Garden State	2004
+James	Ecklund	Garden State	2004
+Ato	Essandoh	Garden State	2004
+Gary (I)	Gilbert	Garden State	2004
+Kenneth	Graymez	Garden State	2004
+Ben	Hauck	Garden State	2004
+Jakob	Hawkins	Garden State	2004
+Ian	Holm	Garden State	2004
+Luis	Icaza	Garden State	2004
+Ron	Leibman	Garden State	2004
+Austin	Lysy	Garden State	2004
+Augusto	Magoni	Garden State	2004
+Method	Man	Garden State	2004
+Seth Michael	May	Garden State	2004
+Ryan B.	Moschetti	Garden State	2004
+Denis	O'Hare	Garden State	2004
+Jim (II)	Parsons	Garden State	2004
+Armando	Riesco	Garden State	2004
+Peter	Sarsgaard	Garden State	2004
+Michael (I)	Weston	Garden State	2004
+George C.	Wolfe	Garden State	2004
+Pamela	Abdy	Garden State	2004
+Tracey	Antosiweicz	Garden State	2004
+Debbon	Ayer	Garden State	2004
+Ann	Dowd	Garden State	2004
+Amy	Ferguson	Garden State	2004
+Jill	Flint	Garden State	2004
+Jackie	Hoffman	Garden State	2004
+Jayne	Houdyshell	Garden State	2004
+Janet	Huege	Garden State	2004
+Wynter	Kullman	Garden State	2004
+Trisha	LaFache	Garden State	2004
+Yvette	Mercedes	Garden State	2004
+Natalie	Portman	Garden State	2004
+Soara-Joy	Ross	Garden State	2004
+Jean	Smart	Garden State	2004
+Lisa	Soule	Garden State	2004
+Larry	Bishop	Kill Bill: Vol. 2	2004
+David	Carradine	Kill Bill: Vol. 2	2004
+William Paul	Clark	Kill Bill: Vol. 2	2004
+Al Manuel	Douglas	Kill Bill: Vol. 2	2004
+Sid	Haig	Kill Bill: Vol. 2	2004
+Samuel L.	Jackson	Kill Bill: Vol. 2	2004
+Chia Hui	Liu	Kill Bill: Vol. 2	2004
+Michael (I)	Madsen	Kill Bill: Vol. 2	2004
+Clark	Middleton	Kill Bill: Vol. 2	2004
+Christopher Allen	Nelson	Kill Bill: Vol. 2	2004
+Michael (I)	Parks	Kill Bill: Vol. 2	2004
+Stevo	Polyi	Kill Bill: Vol. 2	2004
+Jorge (II)	Silva	Kill Bill: Vol. 2	2004
+Bo	Svenson	Kill Bill: Vol. 2	2004
+Reda	Beebe	Kill Bill: Vol. 2	2004
+Citlati Guadalupe	Bojorquez	Kill Bill: Vol. 2	2004
+Laura	Cayouette	Kill Bill: Vol. 2	2004
+Lucia	Cruz Marroquin	Kill Bill: Vol. 2	2004
+Maria	de Lourdes Lombera	Kill Bill: Vol. 2	2004
+Maria	Del Rosario Gutiérrez	Kill Bill: Vol. 2	2004
+Jeannie	Epper	Kill Bill: Vol. 2	2004
+Vivica A.	Fox	Kill Bill: Vol. 2	2004
+Perla	Haney-Jardine	Kill Bill: Vol. 2	2004
+Daryl	Hannah	Kill Bill: Vol. 2	2004
+Caitlin	Keats	Kill Bill: Vol. 2	2004
+Helen (IV)	Kim	Kill Bill: Vol. 2	2004
+Lucy	Liu	Kill Bill: Vol. 2	2004
+Vicki	Lucai	Kill Bill: Vol. 2	2004
+Veronica Janet	Martinez	Kill Bill: Vol. 2	2004
+Stephanie L.	Moore	Kill Bill: Vol. 2	2004
+Sonia Angelica	Padilla Curiel	Kill Bill: Vol. 2	2004
+Thea	Rose	Kill Bill: Vol. 2	2004
+Graciela	Salazar Mendoza	Kill Bill: Vol. 2	2004
+Patricia	Silva	Kill Bill: Vol. 2	2004
+Claire	Smithies	Kill Bill: Vol. 2	2004
+Shana	Stein	Kill Bill: Vol. 2	2004
+Uma	Thurman	Kill Bill: Vol. 2	2004
+Venessia	Valentino	Kill Bill: Vol. 2	2004
+Michael (I)	Bowen	Kill Bill: Vol. 1	2003
+David	Carradine	Kill Bill: Vol. 1	2003
+Sonny	Chiba	Kill Bill: Vol. 1	2003
+Goro	Daimon	Kill Bill: Vol. 1	2003
+Xiaohui	Hu	Kill Bill: Vol. 1	2003
+Kazuki	Kitamura	Kill Bill: Vol. 1	2003
+Jun	Kunimura	Kill Bill: Vol. 1	2003
+Michael	Kuroiwa	Kill Bill: Vol. 1	2003
+Naomi	Kusumi	Kill Bill: Vol. 1	2003
+Chia Hui	Liu	Kill Bill: Vol. 1	2003
+Jonathan	Loughran	Kill Bill: Vol. 1	2003
+Michael (I)	Madsen	Kill Bill: Vol. 1	2003
+Akaji	Maro	Kill Bill: Vol. 1	2003
+Hikaru	Midorikawa	Kill Bill: Vol. 1	2003
+Yoshiyuki	Morishita	Kill Bill: Vol. 1	2003
+Christopher Allen	Nelson	Kill Bill: Vol. 1	2003
+Kenji	Ohba	Kill Bill: Vol. 1	2003
+James	Parks	Kill Bill: Vol. 1	2003
+Michael (I)	Parks	Kill Bill: Vol. 1	2003
+Stevo	Polyi	Kill Bill: Vol. 1	2003
+Sakichi	Satô	Kill Bill: Vol. 1	2003
+Tetsuro	Shimaguchi	Kill Bill: Vol. 1	2003
+Shun	Sugata	Kill Bill: Vol. 1	2003
+Issei	Takahashi	Kill Bill: Vol. 1	2003
+Yoji	Tanaka	Kill Bill: Vol. 1	2003
+Satoshi	Yamanaka	Kill Bill: Vol. 1	2003
+Zhang Jin	Zhan	Kill Bill: Vol. 1	2003
+Julie	Dreyfus	Kill Bill: Vol. 1	2003
+Vivica A.	Fox	Kill Bill: Vol. 1	2003
+Sachiko	Fujii	Kill Bill: Vol. 1	2003
+Ronnie Yoshiko	Fujiyama	Kill Bill: Vol. 1	2003
+Daryl	Hannah	Kill Bill: Vol. 1	2003
+Yuki	Kazamatsuri	Kill Bill: Vol. 1	2003
+Ambrosia	Kelley	Kill Bill: Vol. 1	2003
+Chiaki	Kuriyama	Kill Bill: Vol. 1	2003
+Lucy	Liu	Kill Bill: Vol. 1	2003
+Ai (III)	Maeda	Kill Bill: Vol. 1	2003
+Julie	Manase	Kill Bill: Vol. 1	2003
+Uma	Thurman	Kill Bill: Vol. 1	2003
+Shu Lan	Tuan	Kill Bill: Vol. 1	2003
+Yoshiko	Yamaguchi	Kill Bill: Vol. 1	2003
+Shigekazu	Aida	Lost in Translation	2003
+Julliet	Akinyi	Lost in Translation	2003
+Richard (XV)	Allen	Lost in Translation	2003
+Ryuichiro	Baba	Lost in Translation	2003
+Diedrich	Bollman	Lost in Translation	2003
+Hugo	Codaro	Lost in Translation	2003
+François	du Bois	Lost in Translation	2003
+Georg O.P.	Eschert	Lost in Translation	2003
+Takashi (I)	Fujii	Lost in Translation	2003
+Yasuhiko	Hattori	Lost in Translation	2003
+Fumihiro	Hayashi	Lost in Translation	2003
+Yumi	Ikeda	Lost in Translation	2003
+Hiroshi (I)	Kawashima	Lost in Translation	2003
+Nobuhiko	Kitamura	Lost in Translation	2003
+Nao	Kitman	Lost in Translation	2003
+Ryo	Kondo	Lost in Translation	2003
+Tim	Leffman	Lost in Translation	2003
+Jun	Maki	Lost in Translation	2003
+Kazuyoshi	Minamimagoe	Lost in Translation	2003
+Akimitsu	Naruyama	Lost in Translation	2003
+Akira	Motomura	Lost in Translation	2003
+Bill (I)	Murray	Lost in Translation	2003
+Tetsuro	Naka	Lost in Translation	2003
+Kanako	Nakazato	Lost in Translation	2003
+Kunichi	Nomura	Lost in Translation	2003
+Yuji	Okabe	Lost in Translation	2003
+Gregory	Pekar	Lost in Translation	2003
+Giovanni	Ribisi	Lost in Translation	2003
+Yumika	Saki	Lost in Translation	2003
+Kazuko (I)	Shibata	Lost in Translation	2003
+Osamu	Shigematu	Lost in Translation	2003
+Asuka	Shimuzu	Lost in Translation	2003
+Ikuko	Takahashi	Lost in Translation	2003
+Noguchi	Takayuki	Lost in Translation	2003
+Kei	Takyo	Lost in Translation	2003
+Koichi (I)	Tanaka	Lost in Translation	2003
+Mark	Willms	Lost in Translation	2003
+Kazuo	Yamada	Lost in Translation	2003
+Akira (II)	Yamaguchi	Lost in Translation	2003
+Diamond	Yukai	Lost in Translation	2003
+Nao	Asuka	Lost in Translation	2003
+Yû	Daiki	Lost in Translation	2003
+Anna	Faris	Lost in Translation	2003
+Toshikawa	Hiromi	Lost in Translation	2003
+Scarlett	Johansson	Lost in Translation	2003
+Hiroko	Kawasaki	Lost in Translation	2003
+Catherine (II)	Lambert	Lost in Translation	2003
+Akiko	Monou	Lost in Translation	2003
+Nancy (I)	Steiner	Lost in Translation	2003
+Akiko	Takeshita	Lost in Translation	2003
+Lisle	Wilkerson	Lost in Translation	2003
+Nat	Benchley	Pirates of the Caribbean	2003
+Garrett	Brawith	Pirates of the Caribbean	2003
+Arnold	Chon	Pirates of the Caribbean	2003
+Ralph	Cosham	Pirates of the Caribbean	2003
+Peter	Gil	Pirates of the Caribbean	2003
+Robert (X)	Hoffman	Pirates of the Caribbean	2003
+Darren	Joel	Pirates of the Caribbean	2003
+Seth Adam	Jones	Pirates of the Caribbean	2003
+Mykal Wayne	Williams	Pirates of the Caribbean	2003
+Catherine	Flye	Pirates of the Caribbean	2003
+Keira	Knightley	Pirates of the Caribbean	2003
+Casey	Affleck	Ocean's Eleven	2001
+Jim	Alfonso	Ocean's Eleven	2001
+Anthony	Allison	Ocean's Eleven	2001
+Bill (I)	Allison	Ocean's Eleven	2001
+Frankie J.	Allison	Ocean's Eleven	2001
+Scott Clark	Beringer	Ocean's Eleven	2001
+Barry	Brandt	Ocean's Eleven	2001
+Scott	Caan	Ocean's Eleven	2001
+Philip	Caldwell	Ocean's Eleven	2001
+Don	Cheadle	Ocean's Eleven	2001
+George	Clooney	Ocean's Eleven	2001
+Joe (I)	Coyle	Ocean's Eleven	2001
+James	Curatola	Ocean's Eleven	2001
+Matt	Damon	Ocean's Eleven	2001
+Michael	Delano	Ocean's Eleven	2001
+John C.	Fiore	Ocean's Eleven	2001
+Siegfried	Fischbacher	Ocean's Eleven	2001
+Mark	Gantt	Ocean's Eleven	2001
+Andy (I)	Garcia	Ocean's Eleven	2001
+Elliott	Gould	Ocean's Eleven	2001
+Topher	Grace	Ocean's Eleven	2001
+Laurence R.	Griffin	Ocean's Eleven	2001
+Jorge R.	Hernandez	Ocean's Eleven	2001
+Roy	Horn	Ocean's Eleven	2001
+Joshua	Jackson	Ocean's Eleven	2001
+Eddie	Jemison	Ocean's Eleven	2001
+David (II)	Jensen	Ocean's Eleven	2001
+William (I)	Johnson	Ocean's Eleven	2001
+Vladimir	Klitschko	Ocean's Eleven	2001
+Tommy	Kordick	Ocean's Eleven	2001
+Joe	La Due	Ocean's Eleven	2001
+Charles	La Russa	Ocean's Eleven	2001
+Jim	Lampley	Ocean's Eleven	2001
+Steve (I)	Lawrence	Ocean's Eleven	2001
+David	Leitch	Ocean's Eleven	2001
+Lennox	Lewis	Ocean's Eleven	2001
+Bernie	Mac	Ocean's Eleven	2001
+J.P.	Manoux	Ocean's Eleven	2001
+Brad (I)	Martin	Ocean's Eleven	2001
+Larry	Merchant	Ocean's Eleven	2001
+Rusty	Meyers	Ocean's Eleven	2001
+Wayne	Newton	Ocean's Eleven	2001
+Paul L.	Nolan	Ocean's Eleven	2001
+Anthony	Parrulli	Ocean's Eleven	2001
+Frank (III)	Patton	Ocean's Eleven	2001
+Timothy Paul	Perez	Ocean's Eleven	2001
+Robert (I)	Peters	Ocean's Eleven	2001
+Gary	Pike	Ocean's Eleven	2001
+Brad	Pitt	Ocean's Eleven	2001
+Miguel (I)	Pérez	Ocean's Eleven	2001
+Shaobo	Qin	Ocean's Eleven	2001
+Richard (III)	Reed	Ocean's Eleven	2001
+Carl	Reiner	Ocean's Eleven	2001
+Troy	Robinson	Ocean's Eleven	2001
+John	Robotham	Ocean's Eleven	2001
+David C.	Roehm Sr.	Ocean's Eleven	2001
+Thomas	Rosales Jr.	Ocean's Eleven	2001
+Robin	Sachs	Ocean's Eleven	2001
+Laurent	Schwaar	Ocean's Eleven	2001
+Scott L.	Schwartz	Ocean's Eleven	2001
+Henry	Silva	Ocean's Eleven	2001
+Tim	Snay	Ocean's Eleven	2001
+Steven	Soderbergh	Ocean's Eleven	2001
+Ronn	Soeda	Ocean's Eleven	2001
+David (II)	Sontag	Ocean's Eleven	2001
+Larry	Sontag	Ocean's Eleven	2001
+Richard (I)	Steele	Ocean's Eleven	2001
+Gregory	Stenson	Ocean's Eleven	2001
+Emanuel	Steward	Ocean's Eleven	2001
+Yann	Toderi	Ocean's Eleven	2001
+Vincent (II)	Ward	Ocean's Eleven	2001
+Barry (I)	Watson	Ocean's Eleven	2001
+Jerry	Weintraub	Ocean's Eleven	2001
+Shane	West	Ocean's Eleven	2001
+Bernie	Yuman	Ocean's Eleven	2001
+Kelly	Adkins	Ocean's Eleven	2001
+Cecelia Ann	Birt	Ocean's Eleven	2001
+Holly Marie	Combs	Ocean's Eleven	2001
+Angie	Dickinson	Ocean's Eleven	2001
+Carol	Florence	Ocean's Eleven	2001
+Lori	Galinski	Ocean's Eleven	2001
+Eydie	Gormé	Ocean's Eleven	2001
+Mycole	Metcalf	Ocean's Eleven	2001
+Julia	Roberts	Ocean's Eleven	2001
+Andrew	Adamson	Shrek	2001
+Guillaume (II)	Aretos	Shrek	2001
+Val	Bettin	Shrek	2001
+John	Bisom	Shrek	2001
+Bobby	Block	Shrek	2001
+Cody	Cameron	Shrek	2001
+Vincent	Cassel	Shrek	2001
+Jim	Cummings	Shrek	2001
+Peter	Dennis	Shrek	2001
+Michael	Galasso	Shrek	2001
+Matthew	Gonder	Shrek	2001
+Christopher	Knights	Shrek	2001
+John	Lithgow	Shrek	2001
+Chris (VII)	Miller	Shrek	2001
+Eddie (I)	Murphy	Shrek	2001
+Mike	Myers	Shrek	2001
+Clive	Pearse	Shrek	2001
+Calvin	Remsberg	Shrek	2001
+Simon J.	Smith	Shrek	2001
+Conrad (I)	Vernon	Shrek	2001
+Jean-Paul	Vignon	Shrek	2001
+Jacquie	Barnbrook	Shrek	2001
+Cameron	Diaz	Shrek	2001
+Kathleen (I)	Freeman	Shrek	2001
+Elisa	Gabrielli	Shrek	2001
+Mark	Bramhall	Vanilla Sky	2001
+W. Earl	Brown	Vanilla Sky	2001
+Marty (II)	Collins	Vanilla Sky	2001
+Steven	Colvin	Vanilla Sky	2001
+Tom	Cruise	Vanilla Sky	2001
+Robertson	Dean	Vanilla Sky	2001
+John	Fedevich	Vanilla Sky	2001
+Johnny	Galecki	Vanilla Sky	2001
+Paul	Haggar	Vanilla Sky	2001
+Jack (V)	Hall	Vanilla Sky	2001
+Robert F.	Harrison	Vanilla Sky	2001
+Todd	Harrison	Vanilla Sky	2001
+Tim	Hopper	Vanilla Sky	2001
+Zach	Hudson	Vanilla Sky	2001
+Ryan	Keating	Vanilla Sky	2001
+Michael	Kehoe	Vanilla Sky	2001
+John	Kepley	Vanilla Sky	2001
+Mark	Kozelek	Vanilla Sky	2001
+Jason (I)	Lee	Vanilla Sky	2001
+Tommy (VI)	Lee	Vanilla Sky	2001
+Zachary	Lee	Vanilla Sky	2001
+Adam	LeGrant	Vanilla Sky	2001
+Ken (I)	Leung	Vanilla Sky	2001
+David	Lewison	Vanilla Sky	2001
+Scotch Ellis	Loring	Vanilla Sky	2001
+Jacob Neal	Lunders	Vanilla Sky	2001
+William	Mapother	Vanilla Sky	2001
+Patrick	McMullen	Vanilla Sky	2001
+Jan	Munroe	Vanilla Sky	2001
+James	Murtaugh	Vanilla Sky	2001
+Conan	O'Brien	Vanilla Sky	2001
+Mark	Pinter	Vanilla Sky	2001
+Ray	Proscia	Vanilla Sky	2001
+Kurt (I)	Russell	Vanilla Sky	2001
+Jonathan	Sanger	Vanilla Sky	2001
+Fred	Schruers	Vanilla Sky	2001
+Armand	Schultz	Vanilla Sky	2001
+Brent	Sexton	Vanilla Sky	2001
+Michael (V)	Shannon	Vanilla Sky	2001
+Curt	Skaggs	Vanilla Sky	2001
+Timothy	Spall	Vanilla Sky	2001
+Steven	Spielberg	Vanilla Sky	2001
+Andrei	Sterling	Vanilla Sky	2001
+The Great John	Sypolt	Vanilla Sky	2001
+Noah	Taylor	Vanilla Sky	2001
+Mel	Thompson	Vanilla Sky	2001
+Bryan (II)	Todd	Vanilla Sky	2001
+Robin	Van Sharner	Vanilla Sky	2001
+Bobby	Walsh	Vanilla Sky	2001
+Cameron (I)	Watson	Vanilla Sky	2001
+Jeff (I)	Weiss	Vanilla Sky	2001
+Jhaemi	Willens	Vanilla Sky	2001
+Randy	Woodside	Vanilla Sky	2001
+Jennifer	Aspen	Vanilla Sky	2001
+Carolyn	Byrne	Vanilla Sky	2001
+Julia	Carothers Hughes	Vanilla Sky	2001
+Alice Marie	Crowe	Vanilla Sky	2001
+Cindy	Crowe	Vanilla Sky	2001
+Penélope	Cruz	Vanilla Sky	2001
+Cameron	Diaz	Vanilla Sky	2001
+Janine	Foster	Vanilla Sky	2001
+Laura (II)	Fraser	Vanilla Sky	2001
+Jennifer	Gimenez	Vanilla Sky	2001
+Jennifer (I)	Griffin	Vanilla Sky	2001
+Shalom	Harlow	Vanilla Sky	2001
+Oona	Hart	Vanilla Sky	2001
+Jennifer Marie	Kelley	Vanilla Sky	2001
+Lori	Lezama	Vanilla Sky	2001
+Erin	McElmurry	Vanilla Sky	2001
+Ivana	Milicevic	Vanilla Sky	2001
+Delaina	Mitchell	Vanilla Sky	2001
+Jane	Pratt	Vanilla Sky	2001
+Ana Maria	Quintana	Vanilla Sky	2001
+Holly	Raye	Vanilla Sky	2001
+Julia	Schuler	Vanilla Sky	2001
+Stacey	Sher	Vanilla Sky	2001
+Jessica	Siemens	Vanilla Sky	2001
+Carly	Starr Brullo Niles	Vanilla Sky	2001
+Tilda	Swinton	Vanilla Sky	2001
+Nicole	Taylor Hart	Vanilla Sky	2001
+Laurel (I)	Wiley	Vanilla Sky	2001
+Christie	Will	Vanilla Sky	2001
+Alicia	Witt	Vanilla Sky	2001
+Danielle	Wolf	Vanilla Sky	2001
+Mark	Boone Junior	Memento	2000
+Russ	Fega	Memento	2000
+Larry (I)	Holden	Memento	2000
+Thomas (III)	Lennon	Memento	2000
+Joe	Pantoliano	Memento	2000
+Guy (I)	Pearce	Memento	2000
+Callum Keith	Rennie	Memento	2000
+Stephen	Tobolowsky	Memento	2000
+Buzz	Visconti	Memento	2000
+Kimberly (I)	Campbell	Memento	2000
+Jorja	Fox	Memento	2000
+Harriet Sansom	Harris	Memento	2000
+Carrie-Anne	Moss	Memento	2000
+Marianne	Muellerleile	Memento	2000
+Royce D.	Applegate	O Brother, Where Art Thou?	2000
+Michael	Badalucco	O Brother, Where Art Thou?	2000
+George	Clooney	O Brother, Where Art Thou?	2000
+Frank	Collison	O Brother, Where Art Thou?	2000
+Sidney	Cox	O Brother, Where Art Thou?	2000
+Willard	Cox	O Brother, Where Art Thou?	2000
+Jerry (III)	Douglas	O Brother, Where Art Thou?	2000
+Charles	Durning	O Brother, Where Art Thou?	2000
+Wayne	Duvall	O Brother, Where Art Thou?	2000
+Michael W.	Finnell	O Brother, Where Art Thou?	2000
+Millford	Fortenberry	O Brother, Where Art Thou?	2000
+Christopher	Francis	O Brother, Where Art Thou?	2000
+Issac	Freeman	O Brother, Where Art Thou?	2000
+Ed	Gale	O Brother, Where Art Thou?	2000
+Quinn	Gasaway	O Brother, Where Art Thou?	2000
+John (I)	Goodman	O Brother, Where Art Thou?	2000
+Geoffrey	Gould	O Brother, Where Art Thou?	2000
+Robert	Hamlett	O Brother, Where Art Thou?	2000
+David (III)	Holt	O Brother, Where Art Thou?	2000
+J.R.	Horne	O Brother, Where Art Thou?	2000
+Chris Thomas	King	O Brother, Where Art Thou?	2000
+Nathaniel	Lee Jr.	O Brother, Where Art Thou?	2000
+John (II)	Locke	O Brother, Where Art Thou?	2000
+John (I)	McConnell	O Brother, Where Art Thou?	2000
+Ray	McKinnon	O Brother, Where Art Thou?	2000
+Tim Blake	Nelson	O Brother, Where Art Thou?	2000
+Del	Pentecost	O Brother, Where Art Thou?	2000
+A. Ray	Ratliff	O Brother, Where Art Thou?	2000
+Brian	Reddy	O Brother, Where Art Thou?	2000
+Stephen (I)	Root	O Brother, Where Art Thou?	2000
+Ed	Snodderly	O Brother, Where Art Thou?	2000
+John	Turturro	O Brother, Where Art Thou?	2000
+Daniel	von Bargen	O Brother, Where Art Thou?	2000
+Wilson	Waters Jr.	O Brother, Where Art Thou?	2000
+Lee (II)	Weaver	O Brother, Where Art Thou?	2000
+Buck	White	O Brother, Where Art Thou?	2000
+Marianna	Breland	O Brother, Where Art Thou?	2000
+Evelyn	Cox	O Brother, Where Art Thou?	2000
+Suzanne	Cox	O Brother, Where Art Thou?	2000
+April	Hardcastle	O Brother, Where Art Thou?	2000
+Holly	Hunter	O Brother, Where Art Thou?	2000
+Lindsey	Miller	O Brother, Where Art Thou?	2000
+Georgia Rae	Rainer	O Brother, Where Art Thou?	2000
+Natalie	Shedd	O Brother, Where Art Thou?	2000
+Mia	Tate	O Brother, Where Art Thou?	2000
+Christy (I)	Taylor	O Brother, Where Art Thou?	2000
+Musetta	Vander	O Brother, Where Art Thou?	2000
+Gillian	Welch	O Brother, Where Art Thou?	2000
+Cheryl (II)	White	O Brother, Where Art Thou?	2000
+Sharon (I)	White	O Brother, Where Art Thou?	2000
+William	Addy	Snatch.	2000
+Dean	Batchelor	Snatch.	2000
+William (II)	Beck	Snatch.	2000
+Andy	Beckwith	Snatch.	2000
+Ewen	Bremner	Snatch.	2000
+Jason	Buckham	Snatch.	2000
+Sol	Campbell	Snatch.	2000
+Mickey	Cantwell	Snatch.	2000
+Jason Ninh	Cao	Snatch.	2000
+Charles	Cork	Snatch.	2000
+Trevor	Crouch	Snatch.	2000
+James (I)	Cunningham	Snatch.	2000
+Elwin 'Chopper'	David	Snatch.	2000
+Mickey	Dee	Snatch.	2000
+Benicio	Del Toro	Snatch.	2000
+Liam	Donaghy	Snatch.	2000
+Sam (I)	Douglas	Snatch.	2000
+Austin	Drage	Snatch.	2000
+Tim	Faraday	Snatch.	2000
+Dennis	Farina	Snatch.	2000
+John	Farnell	Snatch.	2000
+Jason	Flemyng	Snatch.	2000
+Adam	Fogerty	Snatch.	2000
+Alan (I)	Ford	Snatch.	2000
+Robbie	Gee	Snatch.	2000
+Erwin	Goldi	Snatch.	2000
+Stephen (I)	Graham	Snatch.	2000
+John (I)	Hathaway	Snatch.	2000
+Sid	Hoare	Snatch.	2000
+Michael (VII)	Hughes	Snatch.	2000
+Ronald	Isaac	Snatch.	2000
+Lennie	James	Snatch.	2000
+Vinnie	Jones	Snatch.	2000
+Chuck	Julian	Snatch.	2000
+David	Legeno	Snatch.	2000
+Liam	McMahon	Snatch.	2000
+Eric (II)	Meyers	Snatch.	2000
+Paul	O'Boyle	Snatch.	2000
+Shaun	Pearson	Snatch.	2000
+Brad	Pitt	Snatch.	2000
+Mike (I)	Reid	Snatch.	2000
+Guy	Ritchie	Snatch.	2000
+Jimmy	Roussounis	Snatch.	2000
+Rade	Serbedzija	Snatch.	2000
+Andrew	Shield	Snatch.	2000
+Dean (I)	Smith	Snatch.	2000
+Roy	Snell	Snatch.	2000
+Jason	Statham	Snatch.	2000
+Trevor	Steedman	Snatch.	2000
+Yuri (II)	Stepanov	Snatch.	2000
+Peter	Szakacs	Snatch.	2000
+John	Taheny	Snatch.	2000
+Michael	Taheny	Snatch.	2000
+Tony	Tang	Snatch.	2000
+Mick	Theo	Snatch.	2000
+Andy	Till	Snatch.	2000
+Velibor	Topic	Snatch.	2000
+Jim (II)	Warren	Snatch.	2000
+Scott	Welch	Snatch.	2000
+Joe (IV)	Williams	Snatch.	2000
+Nikki (II)	Collins	Snatch.	2000
+Teena	Collins	Snatch.	2000
+Sorcha	Cusack	Snatch.	2000
+Sydney	Sedin	Snatch.	2000
+David (I)	Andrews	Fight Club	1999
+Richmond	Arquette	Fight Club	1999
+Michael	Arturo	Fight Club	1999
+Eion	Bailey	Fight Club	1999
+Lou	Beatty Jr.	Fight Club	1999
+Joel	Bissonnette	Fight Club	1999
+Stuart	Blumberg	Fight Club	1999
+Anderson	Bourell	Fight Club	1999
+Ezra	Buzzington	Fight Club	1999
+Paul	Carafotes	Fight Club	1999
+Carl	Ciarfalio	Fight Club	1999
+Sydney 'Big Dawg'	Colston	Fight Club	1999
+Tim	De Zarn	Fight Club	1999
+Charlie	Dell	Fight Club	1999
+Paul (I)	Dillon	Fight Club	1999
+Christopher John	Fields	Fight Club	1999
+Mark (I)	Fite	Fight Club	1999
+Michael	Girardin	Fight Club	1999
+Thom	Gossom Jr.	Fight Club	1999
+Zach	Grenier	Fight Club	1999
+Phil	Hawn	Fight Club	1999
+Peter	Iacangelo	Fight Club	1999
+Joon B.	Kim	Fight Club	1999
+Edward (I)	Kowalczyk	Fight Club	1999
+Rob	Lanza	Fight Club	1999
+Jared	Leto	Fight Club	1999
+Tyrone R.	Livingston	Fight Club	1999
+Scotch Ellis	Loring	Fight Club	1999
+Kevin Scott	Mack	Fight Club	1999
+George	Maguire	Fight Club	1999
+Owen	Masterson	Fight Club	1999
+Holt	McCallany	Fight Club	1999
+Pat (I)	McNamara	Fight Club	1999
+Dean	Measor	Fight Club	1999
+Evan	Mirand	Fight Club	1999
+Bennie	Moore	Fight Club	1999
+Edward (I)	Norton	Fight Club	1999
+Louis	Ortiz	Fight Club	1999
+Todd	Peirce	Fight Club	1999
+Brad	Pitt	Fight Club	1999
+J.T.	Pontino	Fight Club	1999
+Van	Quattro	Fight Club	1999
+Chad	Randau	Fight Club	1999
+Markus	Redmond	Fight Club	1999
+Robby	Robinson	Fight Club	1999
+David	Rockit Hynes	Fight Club	1999
+Marcio	Rosario	Fight Club	1999
+Gregory	Silva	Fight Club	1999
+David Lee	Smith	Fight Club	1999
+Robert J.	Stephenson	Fight Club	1999
+Leonard	Termo	Fight Club	1999
+David Jean	Thomas	Fight Club	1999
+Michael Shamus	Wiles	Fight Club	1999
+Matt (I)	Winston	Fight Club	1999
+Valerie	Bickford	Fight Club	1999
+Eugenie	Bondurant	Fight Club	1999
+Helena	Bonham Carter	Fight Club	1999
+Christina	Cabot	Fight Club	1999
+Andi	Carnick	Fight Club	1999
+Christie	Cronenweth	Fight Club	1999
+Dierdre	Downing-Jackson	Fight Club	1999
+W. Lauren	Sanchez	Fight Club	1999
+Rachel	Singer	Fight Club	1999
+Julian	Arahanga	Matrix, The	1999
+David (I)	Aston	Matrix, The	1999
+Jeremy	Ball	Matrix, The	1999
+Michael	Butcher	Matrix, The	1999
+Marcus	Chong	Matrix, The	1999
+Steve	Dodd	Matrix, The	1999
+Matt	Doran	Matrix, The	1999
+Laurence	Fishburne	Matrix, The	1999
+Paul (I)	Goddard	Matrix, The	1999
+Marc	Gray	Matrix, The	1999
+Nigel	Harbach	Matrix, The	1999
+Harry (I)	Lawrence	Matrix, The	1999
+Bernard	Ledger	Matrix, The	1999
+David (I)	O'Connor	Matrix, The	1999
+Joe	Pantoliano	Matrix, The	1999
+Anthony Ray	Parker	Matrix, The	1999
+Luke	Quinton	Matrix, The	1999
+Keanu	Reeves	Matrix, The	1999
+Chris (III)	Scott	Matrix, The	1999
+Robert	Simper	Matrix, The	1999
+Robert (VII)	Taylor	Matrix, The	1999
+Hugo	Weaving	Matrix, The	1999
+Adryn	White	Matrix, The	1999
+Rowan	Witt	Matrix, The	1999
+Lawrence	Woodward	Matrix, The	1999
+Bill (I)	Young	Matrix, The	1999
+Tamara (I)	Brown	Matrix, The	1999
+Gloria	Foster	Matrix, The	1999
+Denni	Gordon	Matrix, The	1999
+Fiona	Johnson	Matrix, The	1999
+Belinda	McClory	Matrix, The	1999
+Carrie-Anne	Moss	Matrix, The	1999
+Ada	Nicodemou	Matrix, The	1999
+Janaya	Pender	Matrix, The	1999
+Natalie	Tjen	Matrix, The	1999
+Elenor	Witt	Matrix, The	1999
+Diedrich	Bader	Office Space	1999
+Joe	Bays	Office Space	1999
+Jack	Betts	Office Space	1999
+Josh	Bond	Office Space	1999
+Gary (I)	Cole	Office Space	1999
+Jesse	De Luna	Office Space	1999
+Todd	Duffey	Office Space	1999
+Gabriel	Folse	Office Space	1999
+David (I)	Herman	Office Space	1999
+Kyle Scott	Jackson	Office Space	1999
+Orlando	Jones	Office Space	1999
+Mike (I)	Judge	Office Space	1999
+Mark	Kubiak	Office Space	1999
+Ron	Livingston	Office Space	1999
+K. Todd	Lytle	Office Space	1999
+John C.	McGinley	Office Space	1999
+Michael (I)	McShane	Office Space	1999
+Ajay	Naidu	Office Space	1999
+Greg (II)	Pitts	Office Space	1999
+Justin	Possenti	Office Space	1999
+Rupert	Reyes	Office Space	1999
+Richard	Riehle	Office Space	1999
+Stephen (I)	Root	Office Space	1999
+Tom	Schuster	Office Space	1999
+Paul (I)	Willson	Office Space	1999
+Jennifer	Aniston	Office Space	1999
+Jackie	Belvin	Office Space	1999
+Natalie (I)	Denning	Office Space	1999
+Jennifer Jane	Emerson	Office Space	1999
+Barbara	George-Reiss	Office Space	1999
+Kinna	McInroe	Office Space	1999
+Linda	Wakeman	Office Space	1999
+Alexandra	Wentworth	Office Space	1999
+Abraham	Aronofsky	Pi	1998
+Peter	Cheyenne	Pi	1998
+Scott	Franklin	Pi	1998
+Sean	Gullette	Pi	1998
+Ari	Handel	Pi	1998
+Stanley	Herman	Pi	1998
+J.C.	Islander	Pi	1998
+Chris (IV)	Johnson	Pi	1998
+Richard	Lifschutz	Pi	1998
+Clint	Mansell	Pi	1998
+Mark	Margolis	Pi	1998
+Sal	Monte	Pi	1998
+Ajay	Naidu	Pi	1998
+Stephen	Pearlman	Pi	1998
+Oren	Sarch	Pi	1998
+Lloyd	Schwartz	Pi	1998
+Ray	Seiden	Pi	1998
+Ben (II)	Shenkman	Pi	1998
+David	Strahlberg	Pi	1998
+David	Tawil	Pi	1998
+Tom (I)	Tumminello	Pi	1998
+Lauren (I)	Fox	Pi	1998
+Joanne	Gordon	Pi	1998
+Pamela (II)	Hart	Pi	1998
+Kristyn Mae-Anne	Lao	Pi	1998
+Espher Lao	Nieves	Pi	1998
+Pam	Shoaib	Pi	1998
+Samia	Shoaib	Pi	1998
+Lewis	Abernathy	Titanic	1997
+Seth (I)	Adkins	Titanic	1997
+Scott G.	Anderson	Titanic	1997
+Kris	Andersson	Titanic	1997
+Richard (II)	Ashton	Titanic	1997
+Jason	Barry	Titanic	1997
+Eric	Braeden	Titanic	1997
+Paul	Brightwell	Titanic	1997
+Mike	Butters	Titanic	1997
+Chris (I)	Byrne	Titanic	1997
+James (I)	Cameron	Titanic	1997
+Bruno	Campolo	Titanic	1997
+Mark	Capri	Titanic	1997
+Nicholas	Cascone	Titanic	1997
+Aaron James	Cash	Titanic	1997
+Marc	Cass	Titanic	1997
+Mark Lindsay	Chapman	Titanic	1997
+Brendan	Connolly	Titanic	1997
+Gregory (I)	Cooke	Titanic	1997
+Chris	Cragnotti	Titanic	1997
+Simon (I)	Crane	Titanic	1997
+David	Cronnelly	Titanic	1997
+Barry	Dennen	Titanic	1997
+Ron	Donachie	Titanic	1997
+Leonardo	DiCaprio	Titanic	1997
+Shay	Duffin	Titanic	1997
+Martin	East	Titanic	1997
+Greg (II)	Ellis	Titanic	1997
+Michael	Ensign	Titanic	1997
+Jonathan	Evans-Jones	Titanic	1997
+Anders (I)	Falk	Titanic	1997
+Edward	Fletcher	Titanic	1997
+Terry	Forestal	Titanic	1997
+Edmund Alan	Forsyth	Titanic	1997
+Bernard (I)	Fox	Titanic	1997
+Richard (I)	Fox	Titanic	1997
+Romeo	Francis	Titanic	1997
+Thomas	Füri	Titanic	1997
+Victor	Garber	Titanic	1997
+James (IV)	Garrett	Titanic	1997
+Werner	Giger	Titanic	1997
+Richard (I)	Graham	Titanic	1997
+Ioan	Gruffudd	Titanic	1997
+Lorenz	Hasler	Titanic	1997
+Paul (IV)	Herbert	Titanic	1997
+Bernard	Hill	Titanic	1997
+Scott	Hislop	Titanic	1997
+Erik	Holland	Titanic	1997
+Martin	Hub	Titanic	1997
+Jonathan	Hyde	Titanic	1997
+Emmett	James	Titanic	1997
+Martin	Jarvis	Titanic	1997
+Rudy	Joffroy	Titanic	1997
+Craig (II)	Kelly	Titanic	1997
+Tony (I)	Kenny	Titanic	1997
+Jari (I)	Kinnunen	Titanic	1997
+Martin (I)	Laing	Titanic	1997
+James	Lancaster	Titanic	1997
+Derek	Lea	Titanic	1997
+Van	Ling	Titanic	1997
+Shep	Lonsdale	Titanic	1997
+Don (II)	Lynch	Titanic	1997
+Johnny (I)	Martin	Titanic	1997
+Stan	Mazin	Titanic	1997
+Nick	Meaney	Titanic	1997
+Patrick (IV)	Murphy	Titanic	1997
+Sean	Nepita	Titanic	1997
+Danny	Nucci	Titanic	1997
+Mike (II)	O'Neal	Titanic	1997
+Bjørn (I)	Olsen	Titanic	1997
+Kevin	Owers	Titanic	1997
+Oliver	Page	Titanic	1997
+Lew	Palter	Titanic	1997
+Bill	Paxton	Titanic	1997
+Dan (I)	Pettersson	Titanic	1997
+Jonathan (I)	Phillips	Titanic	1997
+Dr. Anatoly M.	Sagalevitch	Titanic	1997
+Stephen Wolfe	Smith	Titanic	1997
+Ewan (I)	Stewart	Titanic	1997
+Béla	Szedlák	Titanic	1997
+Ferenc	Szedlák	Titanic	1997
+Rocky (I)	Taylor	Titanic	1997
+Reece P.	Thompson III	Titanic	1997
+R. Gern	Trowbridge	Titanic	1997
+Mark Rafael	Truitt	Titanic	1997
+Liam	Tuohy	Titanic	1997
+Stephen	Twigger	Titanic	1997
+Vern	Urich	Titanic	1997
+Francisco	Váldez	Titanic	1997
+John	Walcutt	Titanic	1997
+Brian (II)	Walsh	Titanic	1997
+David (I)	Warner	Titanic	1997
+Stephen	Wehmeyer	Titanic	1997
+Garth	Wilton	Titanic	1997
+Billy	Zane	Titanic	1997
+Suzy	Amis	Titanic	1997
+Rosalind	Ayres	Titanic	1997
+Bobbie	Bates	Titanic	1997
+Kathy (I)	Bates	Titanic	1997
+Dawn M.	Bourn	Titanic	1997
+Alexandra	Boyd	Titanic	1997
+Fannie	Brett	Titanic	1997
+Charlotte	Chatton	Titanic	1997
+Kathleen S.	Dunn	Titanic	1997
+Frances (I)	Fisher	Titanic	1997
+Anne	Fletcher	Titanic	1997
+Amy	Gaipa	Titanic	1997
+Aimee Amanda	Garten	Titanic	1997
+Jo Lynn	Garten	Titanic	1997
+Jenette	Goldstein	Titanic	1997
+Andie	Hicks	Titanic	1997
+Samantha	Hunt	Titanic	1997
+Linda	Kerns	Titanic	1997
+Rebecca	Klingler	Titanic	1997
+Laramie	Landis	Titanic	1997
+Mandana	Marino	Titanic	1997
+Diana (II)	Morgan	Titanic	1997
+Ellen	O'Brien	Titanic	1997
+Tricia	O'Neil	Titanic	1997
+Camilla	Overbye Roos	Titanic	1997
+Alexandrea	Owens	Titanic	1997
+Judy	Prestininzi	Titanic	1997
+Lisa	Ratzin	Titanic	1997
+Elsa	Raven	Titanic	1997
+Julene	Renee	Titanic	1997
+Rochelle	Rose	Titanic	1997
+Gloria	Stuart	Titanic	1997
+Alison	Waddell	Titanic	1997
+Amber	Waddell	Titanic	1997
+Kate	Winslet	Titanic	1997
+J. Todd	Anderson	Fargo	1996
+John	Bandemer	Fargo	1996
+Bain	Boehlke	Fargo	1996
+Bruce	Bohne	Fargo	1996
+Larry	Brandenburg	Fargo	1996
+Steve	Buscemi	Fargo	1996
+Bruce (I)	Campbell	Fargo	1996
+Tony	Denman	Fargo	1996
+Steve (III)	Edelman	Fargo	1996
+Wayne A.	Evenson	Fargo	1996
+José	Feliciano	Fargo	1996
+James	Gaulke	Fargo	1996
+Gary	Houston	Fargo	1996
+Warren (I)	Keith	Fargo	1996
+David S.	Lomax	Fargo	1996
+John Carroll	Lynch	Fargo	1996
+William H.	Macy	Fargo	1996
+Clifford	Nelson	Fargo	1996
+Robert	Ozasky	Fargo	1996
+Steve (I)	Park	Fargo	1996
+Harve	Presnell	Fargo	1996
+Cliff	Rakerd	Fargo	1996
+Steve	Reevis	Fargo	1996
+Steven I.	Schafer	Fargo	1996
+Peter	Schmitz	Fargo	1996
+Kurt	Schweickhardt	Fargo	1996
+Bix	Skahill	Fargo	1996
+Peter	Stormare	Fargo	1996
+Don	Wescott	Fargo	1996
+Sharon	Anderson	Fargo	1996
+Petra	Boden	Fargo	1996
+Michelle	Hutchison	Fargo	1996
+Larissa	Kokernot	Fargo	1996
+Michelle Suzanne	LeDoux	Fargo	1996
+Frances	McDormand	Fargo	1996
+Melissa	Peterman	Fargo	1996
+Kristin	Rudrüd	Fargo	1996
+Jessica	Shepherd	Fargo	1996
+Rose	Stockton	Fargo	1996
+Sally	Wingert	Fargo	1996
+Alun	Armstrong	Braveheart	1995
+Ian	Bannen	Braveheart	1995
+Stephen	Billington	Braveheart	1995
+Michael (I)	Byrne	Braveheart	1995
+Liam	Carney	Braveheart	1995
+Jimmy	Chisholm	Braveheart	1995
+Fred	Chiverton	Braveheart	1995
+Daniel	Coli	Braveheart	1995
+James	Cosmo	Braveheart	1995
+Brian (I)	Cox	Braveheart	1995
+Martin (I)	Dempsey	Braveheart	1995
+Martin	Dunne	Braveheart	1995
+Tommy (I)	Flanagan	Braveheart	1995
+David (I)	Gant	Braveheart	1995
+Donal	Gibson	Braveheart	1995
+Mel (I)	Gibson	Braveheart	1995
+Brendan	Gleeson	Braveheart	1995
+Peter	Hanly	Braveheart	1995
+Bernard	Horsfall	Braveheart	1995
+John (I)	Kavanagh	Braveheart	1995
+Phil (I)	Kelly	Braveheart	1995
+Jimmy	Keogh	Braveheart	1995
+Sean	Lawlor	Braveheart	1995
+Richard	Leaf	Braveheart	1995
+Dean	Lopata	Braveheart	1995
+Angus	Macfadyen	Braveheart	1995
+Sean	McGinley	Braveheart	1995
+Patrick	McGoohan	Braveheart	1995
+Barry	McGovern	Braveheart	1995
+David (II)	McKay	Braveheart	1995
+Gerard	McSorley	Braveheart	1995
+Peter	Mullan	Braveheart	1995
+Bill	Murdoch	Braveheart	1995
+Martin (I)	Murphy	Braveheart	1995
+John	Murtagh	Braveheart	1995
+Sandy (II)	Nelson	Braveheart	1995
+Alex	Norton	Braveheart	1995
+Niall	O'Brien	Braveheart	1995
+David (I)	O'Hara	Braveheart	1995
+Jer	O'Leary	Braveheart	1995
+Robert	Paterson	Braveheart	1995
+Ralph	Riach	Braveheart	1995
+James (II)	Robinson	Braveheart	1995
+Joe	Savino	Braveheart	1995
+William	Scott-Masson	Braveheart	1995
+Alan	Tall	Braveheart	1995
+Malcolm	Tierney	Braveheart	1995
+Paul (IV)	Tucker	Braveheart	1995
+Rupert	Vansittart	Braveheart	1995
+Ryan (III)	Wallace	Braveheart	1995
+Andrew	Weir	Braveheart	1995
+Tam	White	Braveheart	1995
+Mal	Whyte	Braveheart	1995
+Julie (I)	Austin	Braveheart	1995
+Joanne	Bett	Braveheart	1995
+Mhairi	Calvey	Braveheart	1995
+Sophie	Marceau	Braveheart	1995
+Jeanne	Marine	Braveheart	1995
+Catherine	McCormack	Braveheart	1995
+Gerda	Stevenson	Braveheart	1995
+Carl (I)	Allen	Pulp Fiction	1994
+Alexis	Arquette	Pulp Fiction	1994
+Lawrence	Bender	Pulp Fiction	1994
+Don	Blakely	Pulp Fiction	1994
+Steve	Buscemi	Pulp Fiction	1994
+Paul	Calderon	Pulp Fiction	1994
+Eric (I)	Clark	Pulp Fiction	1994
+Michael	Gilden	Pulp Fiction	1994
+Peter (I)	Greene	Pulp Fiction	1994
+Stephen	Hibbert	Pulp Fiction	1994
+Jerome Patrick	Hoban	Pulp Fiction	1994
+Samuel L.	Jackson	Pulp Fiction	1994
+Harvey	Keitel	Pulp Fiction	1994
+Phil	LaMarr	Pulp Fiction	1994
+Chandler	Lindauer	Pulp Fiction	1994
+Dick (I)	Miller	Pulp Fiction	1994
+Brad (I)	Parker	Pulp Fiction	1994
+Joseph	Pilato	Pulp Fiction	1994
+Ving	Rhames	Pulp Fiction	1994
+Tim	Roth	Pulp Fiction	1994
+Robert	Ruth	Pulp Fiction	1994
+Sy	Sher	Pulp Fiction	1994
+Gary	Shorelle	Pulp Fiction	1994
+Emil	Sitka	Pulp Fiction	1994
+Burr	Steers	Pulp Fiction	1994
+Eric	Stoltz	Pulp Fiction	1994
+Quentin	Tarantino	Pulp Fiction	1994
+John	Travolta	Pulp Fiction	1994
+Rich	Turner	Pulp Fiction	1994
+Christopher	Walken	Pulp Fiction	1994
+Frank	Whaley	Pulp Fiction	1994
+Duane	Whitaker	Pulp Fiction	1994
+Bruce	Willis	Pulp Fiction	1994
+Rosanna	Arquette	Pulp Fiction	1994
+Maria	de Medeiros	Pulp Fiction	1994
+Bronagh	Gallagher	Pulp Fiction	1994
+Kathy	Griffin	Pulp Fiction	1994
+Susan	Griffiths	Pulp Fiction	1994
+Brenda	Hillhouse	Pulp Fiction	1994
+Angela (I)	Jones	Pulp Fiction	1994
+Linda	Kaye	Pulp Fiction	1994
+Lorelei	Leslie	Pulp Fiction	1994
+Laura	Lovelace	Pulp Fiction	1994
+Karen	Maruyama	Pulp Fiction	1994
+Amanda	Plummer	Pulp Fiction	1994
+Ani	Sava	Pulp Fiction	1994
+Julia	Sweeney	Pulp Fiction	1994
+Uma	Thurman	Pulp Fiction	1994
+Venessia	Valentino	Pulp Fiction	1994
+Dion	Anderson	Shawshank Redemption, The	1994
+James	Babson	Shawshank Redemption, The	1994
+Ned	Bellamy	Shawshank Redemption, The	1994
+Gil	Bellows	Shawshank Redemption, The	1994
+Bill	Bolender	Shawshank Redemption, The	1994
+Larry	Brandenburg	Shawshank Redemption, The	1994
+Chuck	Brauchler	Shawshank Redemption, The	1994
+Brian	Brophy	Shawshank Redemption, The	1994
+Clancy	Brown	Shawshank Redemption, The	1994
+Jude	Ciccolella	Shawshank Redemption, The	1994
+Harold E.	Cope Jr.	Shawshank Redemption, The	1994
+John D.	Craig	Shawshank Redemption, The	1994
+Gary Lee	Davis	Shawshank Redemption, The	1994
+Brian	Delate	Shawshank Redemption, The	1994
+Jeffrey	DeMunn	Shawshank Redemption, The	1994
+Eugene C.	DePasquale	Shawshank Redemption, The	1994
+Richard	Doone	Shawshank Redemption, The	1994
+V.J.	Foster	Shawshank Redemption, The	1994
+Alfonso	Freeman	Shawshank Redemption, The	1994
+Morgan (I)	Freeman	Shawshank Redemption, The	1994
+Neil	Giuntoli	Shawshank Redemption, The	1994
+Gordon	Greene	Shawshank Redemption, The	1994
+Bob	Gunton	Shawshank Redemption, The	1994
+Robert	Haley	Shawshank Redemption, The	1994
+David	Hecht	Shawshank Redemption, The	1994
+John (II)	Horton	Shawshank Redemption, The	1994
+Charlie	Kearns	Shawshank Redemption, The	1994
+Paul (I)	Kennedy	Shawshank Redemption, The	1994
+Alan R.	Kessler	Shawshank Redemption, The	1994
+James	Kisicki	Shawshank Redemption, The	1994
+Brian	Libby	Shawshank Redemption, The	1994
+Michael	Lightsey	Shawshank Redemption, The	1994
+Morgan	Lund	Shawshank Redemption, The	1994
+Ken	Magee	Shawshank Redemption, The	1994
+Scott (I)	Mann	Shawshank Redemption, The	1994
+Brad	Mavis	Shawshank Redemption, The	1994
+Paul	McCrane	Shawshank Redemption, The	1994
+Don (I)	McManus	Shawshank Redemption, The	1994
+Frank	Medrano	Shawshank Redemption, The	1994
+Mack	Miles	Shawshank Redemption, The	1994
+Ron (I)	Newell	Shawshank Redemption, The	1994
+Joe	Pecoraro	Shawshank Redemption, The	1994
+David	Proval	Shawshank Redemption, The	1994
+Joseph	Ragno	Shawshank Redemption, The	1994
+Rob	Reider	Shawshank Redemption, The	1994
+Tim (I)	Robbins	Shawshank Redemption, The	1994
+Mark	Rolston	Shawshank Redemption, The	1994
+William (I)	Sadler	Shawshank Redemption, The	1994
+Brad (I)	Spencer	Shawshank Redemption, The	1994
+Jodiviah	Stepp	Shawshank Redemption, The	1994
+John E.	Summers	Shawshank Redemption, The	1994
+Neil	Summers	Shawshank Redemption, The	1994
+Rohn	Thomas	Shawshank Redemption, The	1994
+James	Whitmore	Shawshank Redemption, The	1994
+John R.	Woodward	Shawshank Redemption, The	1994
+Donald	Zinn	Shawshank Redemption, The	1994
+Renee	Blaine	Shawshank Redemption, The	1994
+Dorothy	Silver	Shawshank Redemption, The	1994
+Claire	Slemmer	Shawshank Redemption, The	1994
+Dana (I)	Snyder	Shawshank Redemption, The	1994
+Cornell	Wallace	Shawshank Redemption, The	1994
+Kirk	Baltz	Reservoir Dogs	1992
+Lawrence	Bender	Reservoir Dogs	1992
+Randy (I)	Brooks	Reservoir Dogs	1992
+Edward	Bunker	Reservoir Dogs	1992
+Steve	Buscemi	Reservoir Dogs	1992
+Tony	Cosmo	Reservoir Dogs	1992
+Craig	Hamann	Reservoir Dogs	1992
+Harvey	Keitel	Reservoir Dogs	1992
+Michael (I)	Madsen	Reservoir Dogs	1992
+Chris (I)	Penn	Reservoir Dogs	1992
+Stevo	Polyi	Reservoir Dogs	1992
+Tim	Roth	Reservoir Dogs	1992
+Robert	Ruth	Reservoir Dogs	1992
+Michael	Sottile	Reservoir Dogs	1992
+David (I)	Steen	Reservoir Dogs	1992
+Burr	Steers	Reservoir Dogs	1992
+Quentin	Tarantino	Reservoir Dogs	1992
+Lawrence	Tierney	Reservoir Dogs	1992
+Rich	Turner	Reservoir Dogs	1992
+Rowland	Wafford	Reservoir Dogs	1992
+Steven (I)	Wright	Reservoir Dogs	1992
+Suzanne	Celeste	Reservoir Dogs	1992
+Linda	Kaye	Reservoir Dogs	1992
+Laurie	Latham	Reservoir Dogs	1992
+Maria	Strova	Reservoir Dogs	1992
+Charles (I)	Adler	Little Mermaid, The	1989
+Jack (I)	Angel	Little Mermaid, The	1989
+Rene	Auberjonois	Little Mermaid, The	1989
+Matthew	Balaban	Little Mermaid, The	1989
+Christopher Daniel	Barnes	Little Mermaid, The	1989
+Hamilton	Camp	Little Mermaid, The	1989
+Jim	Cummings	Little Mermaid, The	1989
+Tim (I)	Curry	Little Mermaid, The	1989
+J.D.	Daniels	Little Mermaid, The	1989
+Ed	Gilbert	Little Mermaid, The	1989
+Gerrit	Graham	Little Mermaid, The	1989
+Buddy	Hackett	Little Mermaid, The	1989
+Mark (I)	Hamill	Little Mermaid, The	1989
+Jason	Marin	Little Mermaid, The	1989
+Kenneth	Mars	Little Mermaid, The	1989
+Rod	McKuen	Little Mermaid, The	1989
+Malachi	Pearson	Little Mermaid, The	1989
+Will	Ryan	Little Mermaid, The	1989
+Lee	Tockar	Little Mermaid, The	1989
+Robert	Weil	Little Mermaid, The	1989
+Frank	Welker	Little Mermaid, The	1989
+Ben (I)	Wright	Little Mermaid, The	1989
+Samuel E.	Wright	Little Mermaid, The	1989
+Jodi	Benson	Little Mermaid, The	1989
+Pat (I)	Carroll	Little Mermaid, The	1989
+Nancy	Cartwright	Little Mermaid, The	1989
+Violette	Chauveau	Little Mermaid, The	1989
+Jennifer	Darling	Little Mermaid, The	1989
+Paddi	Edwards	Little Mermaid, The	1989
+Gail	Farrell	Little Mermaid, The	1989
+Anne (I)	Lockhart	Little Mermaid, The	1989
+Edie	McClurg	Little Mermaid, The	1989
+Mickie	McGowan	Little Mermaid, The	1989
+Kimmy	Robertson	Little Mermaid, The	1989
+Billy	Barty	UHF	1989
+David	Bowe	UHF	1989
+Stanley	Brock	UHF	1989
+Kim	Bullard	UHF	1989
+John (I)	Cadenhead	UHF	1989
+Roger	Callard	UHF	1989
+Francis M.	Carlson	UHF	1989
+Adam (I)	Clarke	UHF	1989
+Vance	Colvig Jr.	UHF	1989
+George (III)	Fisher	UHF	1989
+Robert (IV)	Frank	UHF	1989
+Tony	Frank	UHF	1989
+Barry	Friedman	UHF	1989
+Jay	Gardner	UHF	1989
+Anthony	Geary	UHF	1989
+Herbert	Glucksman	UHF	1989
+Ivan	Green	UHF	1989
+Nik	Hagler	UHF	1989
+Eldon G.	Hallum	UHF	1989
+Barry (II)	Hansen	UHF	1989
+John	Harlan	UHF	1989
+Jeff (VII)	Howard	UHF	1989
+Bob	Hungerford	UHF	1989
+Grant (I)	James	UHF	1989
+Steve	Jay	UHF	1989
+M.G.	Kelly	UHF	1989
+Travis (I)	Knight	UHF	1989
+Jay	Levey	UHF	1989
+Adam	Maras	UHF	1989
+Bob	Maras	UHF	1989
+Charles (II)	Marsh	UHF	1989
+Jeff (I)	Maynard	UHF	1989
+Kevin (I)	McCarthy	UHF	1989
+Patrick (I)	O'Brian	UHF	1989
+John	Paragon	UHF	1989
+Emo	Philips	UHF	1989
+David	Proval	UHF	1989
+Joe	Restivo	UHF	1989
+Michael (I)	Richards	UHF	1989
+Kevin	Roden	UHF	1989
+Jim (I)	Rose	UHF	1989
+Tony	Salome	UHF	1989
+Jon (I)	Schwartz	UHF	1989
+Trinidad	Silva	UHF	1989
+Cliff	Stephens	UHF	1989
+Martin	von Haselberg	UHF	1989
+Lou B.	Washington	UHF	1989
+Gedde	Watanabe	UHF	1989
+Robert K.	Weiss	UHF	1989
+Jim (I)	West	UHF	1989
+Joseph	Witt	UHF	1989
+'Weird Al'	Yankovic	UHF	1989
+Sara	Allen	UHF	1989
+Belinda (I)	Bauer	UHF	1989
+Wilma Jeanne	Cummins	UHF	1989
+Fran	Drescher	UHF	1989
+Sherry	Engstrom	UHF	1989
+Victoria (I)	Jackson	UHF	1989
+Nancy (I)	Johnson	UHF	1989
+Sue Ane	Langdon	UHF	1989
+Debbie	Mathieu	UHF	1989
+Lisa R.	Stefanic	UHF	1989
+Billie Lee	Thrash	UHF	1989
+Lori	Wagner	UHF	1989
+William (I)	Armstrong	Aliens	1986
+Jay (I)	Benedict	Aliens	1986
+Michael	Biehn	Aliens	1986
+Blain	Fairman	Aliens	1986
+Christopher	Henn	Aliens	1986
+Lance	Henriksen	Aliens	1986
+William	Hope	Aliens	1986
+Daniel	Kash	Aliens	1986
+John	Lees	Aliens	1986
+Al	Matthews	Aliens	1986
+Paul (I)	Maxwell	Aliens	1986
+Mac (I)	McDonald	Aliens	1986
+Bill	Paxton	Aliens	1986
+Alan	Polonsky	Aliens	1986
+Paul	Reiser	Aliens	1986
+Mark	Rolston	Aliens	1986
+Ricco	Ross	Aliens	1986
+Trevor	Steedman	Aliens	1986
+Tip	Tipping	Aliens	1986
+Carl	Toop	Aliens	1986
+Barbara	Coles	Aliens	1986
+Valerie	Colgan	Aliens	1986
+Holly	De Jong	Aliens	1986
+Jenette	Goldstein	Aliens	1986
+Carrie	Henn	Aliens	1986
+Colette	Hiller	Aliens	1986
+Elizabeth	Inglis	Aliens	1986
+Alibe	Parsons	Aliens	1986
+Cynthia Dale	Scott	Aliens	1986
+Sigourney	Weaver	Aliens	1986
+Graham	Ashley	Star Wars	1977
+Mark (III)	Austin	Star Wars	1977
+Kenny (I)	Baker	Star Wars	1977
+Rick (I)	Baker	Star Wars	1977
+Scott	Beach	Star Wars	1977
+Lightning	Bear	Star Wars	1977
+Jay (I)	Benedict	Star Wars	1977
+Jon (I)	Berg	Star Wars	1977
+Doug	Beswick	Star Wars	1977
+Paul (II)	Blake	Star Wars	1977
+Phil (I)	Brown	Star Wars	1977
+Ted	Burnett	Star Wars	1977
+Eddie	Byrne	Star Wars	1977
+John (V)	Chapman	Star Wars	1977
+Tim	Condren	Star Wars	1977
+Barry	Copping	Star Wars	1977
+Alfie	Curtis	Star Wars	1977
+Peter	Cushing	Star Wars	1977
+Robert (V)	Davies	Star Wars	1977
+Anthony	Daniels	Star Wars	1977
+Robert A.	Denham	Star Wars	1977
+Fraser	Diamond	Star Wars	1977
+Peter (I)	Diamond	Star Wars	1977
+Warwick	Diamond	Star Wars	1977
+Harrison (I)	Ford	Star Wars	1977
+Anthony (I)	Forrest	Star Wars	1977
+Ted	Gagliano	Star Wars	1977
+Salo	Gardner	Star Wars	1977
+Steve	Gawley	Star Wars	1977
+Barry	Gnome	Star Wars	1977
+Rusty	Goffe	Star Wars	1977
+Isaac	Grand	Star Wars	1977
+Alec	Guinness	Star Wars	1977
+Garrick	Hagon	Star Wars	1977
+Nelson (I)	Hall	Star Wars	1977
+Mark (I)	Hamill	Star Wars	1977
+Reg	Harding	Star Wars	1977
+Alan (III)	Harris	Star Wars	1977
+Don (II)	Henderson	Star Wars	1977
+Drewe	Henley	Star Wars	1977
+Frank	Henson	Star Wars	1977
+William	Hootkins	Star Wars	1977
+Arthur (II)	Howell	Star Wars	1977
+Tommy	Ilsley	Star Wars	1977
+Joe (I)	Johnston	Star Wars	1977
+James Earl	Jones	Star Wars	1977
+Joe	Kaye	Star Wars	1977
+Colin Michael	Kitchens	Star Wars	1977
+Jack	Klaff	Star Wars	1977
+Anthony	Lang	Star Wars	1977
+Denis	Lawson	Star Wars	1977
+Richard	LeParmentier	Star Wars	1977
+Laine	Liska	Star Wars	1977
+Angus	MacInnes	Star Wars	1977
+Kabir	Mahjoori	Star Wars	1977
+Alf	Mangan	Star Wars	1977
+Peter (II)	Mayhew	Star Wars	1977
+Rick (I)	McCallum	Star Wars	1977
+Alex	McCrindle	Star Wars	1977
+Grant	McCune	Star Wars	1977
+Jeff	Moon	Star Wars	1977
+Lorne	Peterson	Star Wars	1977
+Marcus	Powell	Star Wars	1977
+David	Prowse	Star Wars	1977
+Jack	Purvis	Star Wars	1977
+Shane	Rimmer	Star Wars	1977
+George	Roubicek	Star Wars	1977
+Leslie	Schofield	Star Wars	1977
+Jeremy	Sinden	Star Wars	1977
+George	Stock	Star Wars	1977
+Roy	Straite	Star Wars	1977
+Peter	Sturgeon	Star Wars	1977
+Peter	Sumner	Star Wars	1977
+John	Sylla	Star Wars	1977
+Tom	Sylla	Star Wars	1977
+Malcolm	Tierney	Star Wars	1977
+Phil	Tippett	Star Wars	1977
+Cy	Town	Star Wars	1977
+Burnell	Tucker	Star Wars	1977
+Morgan (I)	Upton	Star Wars	1977
+Jerry	Walters	Star Wars	1977
+Hal	Wamsley	Star Wars	1977
+Larry (I)	Ward	Star Wars	1977
+Harold	Weed	Star Wars	1977
+Bill (I)	Weston	Star Wars	1977
+Steve 'Spaz'	Williams	Star Wars	1977
+Fred	Wood	Star Wars	1977
+Janice	Burchette	Star Wars	1977
+Gilda	Cohen	Star Wars	1977
+Maria	De Aragon	Star Wars	1977
+Sadie (I)	Eddon	Star Wars	1977
+Kim	Falkinburg	Star Wars	1977
+Carrie	Fisher	Star Wars	1977
+Shelagh	Fraser	Star Wars	1977
+Christine (I)	Hewitt	Star Wars	1977
+Annette	Jones	Star Wars	1977
+Linda (I)	Jones	Star Wars	1977
+Melissa	Kurtz	Star Wars	1977
+Tiffany L.	Kurtz	Star Wars	1977
+Mandy	Morton	Star Wars	1977
+Pam	Rose	Star Wars	1977
+Erica	Simmons	Star Wars	1977
+Angela	Staines	Star Wars	1977
+Diana Sadley	Way	Star Wars	1977
+Rudy	Bond	Godfather, The	1972
+Marlon	Brando	Godfather, The	1972
+Richard	Bright	Godfather, The	1972
+James	Caan	Godfather, The	1972
+Richard S.	Castellano	Godfather, The	1972
+John	Cazale	Godfather, The	1972
+Franco	Citti	Godfather, The	1972
+Richard	Conte	Godfather, The	1972
+Carmine	Coppola	Godfather, The	1972
+Gian-Carlo	Coppola	Godfather, The	1972
+Salvatore	Corsitto	Godfather, The	1972
+Robert (I)	Duvall	Godfather, The	1972
+Corrado	Gaipa	Godfather, The	1972
+Ron (I)	Gilbert	Godfather, The	1972
+Tony (I)	Giorgio	Godfather, The	1972
+Anthony	Gounaris	Godfather, The	1972
+Joe Lo	Grippo	Godfather, The	1972
+Sonny	Grosso	Godfather, The	1972
+Louis	Guss	Godfather, The	1972
+Sterling	Hayden	Godfather, The	1972
+Angelo	Infanti	Godfather, The	1972
+Al	Lettieri	Godfather, The	1972
+Frank	Macetta	Godfather, The	1972
+John	Marley	Godfather, The	1972
+Lou	Martini Jr.	Godfather, The	1972
+Al	Martino	Godfather, The	1972
+John (I)	Martino	Godfather, The	1972
+Lenny	Montana	Godfather, The	1972
+Al	Pacino	Godfather, The	1972
+Rick	Petrucelli	Godfather, The	1972
+Victor	Rendina	Godfather, The	1972
+Burt	Richards	Godfather, The	1972
+Sal	Richards	Godfather, The	1972
+Alex	Rocco	Godfather, The	1972
+Tom	Rosqui	Godfather, The	1972
+Gianni (I)	Russo	Godfather, The	1972
+Vito	Scotti	Godfather, The	1972
+Frank	Sivero	Godfather, The	1972
+Joe	Spinell	Godfather, The	1972
+Gabriele	Torrei	Godfather, The	1972
+Saro	Urzì	Godfather, The	1972
+Ed	Vantura	Godfather, The	1972
+Abe	Vigoda	Godfather, The	1972
+Matthew	Vlahakis	Godfather, The	1972
+Sofia	Coppola	Godfather, The	1972
+Julie	Gregg	Godfather, The	1972
+Diane	Keaton	Godfather, The	1972
+Morgana	King	Godfather, The	1972
+Jeannie	Linero	Godfather, The	1972
+Tere	Livrano	Godfather, The	1972
+Ardell	Sheridan	Godfather, The	1972
+Talia	Shire	Godfather, The	1972
+Filomena	Spagnuolo	Godfather, The	1972
+Simonetta	Stefanelli	Godfather, The	1972
+
+
+Query 3:
+
+Genre(s) with max. number of movies
+
+SELECT mg.genre, COUNT(mg.movie_id) total_number_of_movies
+, m.year, m.name
+FROM movies_genres mg, movies m
+WHERE m.id=mg.movie_id
+GROUP BY genre 
+
+HAVING COUNT(movie_id)=(SELECT MAX(total_movie) 
+						
+			FROM(SELECT genre, COUNT(*) total_movie
+							
+			          FROM movies_genres
+							 
+			          GROUP BY genre) AS max_genre)
+ORDER BY m.year DESC, m.name ASC; 
+
+Output: 
+Drama	17	1995	Apollo 13
+Thriller	17	1986	Aliens
+
+
+Query 4:
+
+Actors with max. number of movies of a user-given genre
+SELECT a1.first_name, a1.last_name, a1.id
+, m.year, m.name
+FROM actors a1, roles r1, movies_genres mg1
+, movies m
+WHERE a1.id=r1.actor_id AND r1.movie_id=mg1.movie_id AND m.id=mg1.movie_id AND mg1.genre='Action'
+
+GROUP BY a1.id 
+
+HAVING COUNT(mg1.movie_id)=
+(SELECT MAX(maxval) 
+				 
+			        FROM (SELECT COUNT(mg.movie_id) maxval, mg.genre, a.first_name, a.last_name, a.id
+					   
+				    FROM actors a, roles r, movies_genres mg
+                       
+				    WHERE a.id=r.actor_id AND r.movie_id=mg.movie_id AND mg.genre='Action' 
+				    GROUP BY a.id
+) AS count_max)
+ORDER BY m.year DESC, m.name ASC
+;
+
+
+Output:
+Michael (I)	Madsen	292028	2003	Kill Bill: Vol. 1
+Stevo	Polyi	378578	2003	Kill Bill: Vol. 1
+
+Query 5:
+
+Actors who also directed a movie
+
+SELECT DISTINCT a.first_name, a.last_name, m.year, m.name
+
+FROM actors a, directors d, movies m, roles r
+
+WHERE a.first_name=d.first_name AND a.last_name=d.last_name AND a.id=r.actor_id AND r.movie_id=m.id
+
+ORDER BY m.year DESC, m.name ASC;
+
+Output:
+Zach	Braff	2004	Garden State
+Steven	Soderbergh	2001	Ocean's Eleven
+Andrew	Adamson	2001	Shrek
+Guy	Ritchie	2000	Snatch.
+Mike (I)	Judge	1999	Office Space
+James (I)	Cameron	1997	Titanic
+Mel (I)	Gibson	1995	Braveheart
+Quentin	Tarantino	1994	Pulp Fiction
+Quentin	Tarantino	1992	Reservoir Dogs
+Jay	Levey	1989	UHF
+Sofia	Coppola	1972	Godfather, The

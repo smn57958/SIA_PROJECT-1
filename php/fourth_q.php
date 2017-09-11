@@ -23,6 +23,7 @@
  * # along with this program. If not, see <http://www.gnu.org/licenses/>.
  * #-------------------------------------------------------------------------------
  */
+error_reporting(0);
 include ("db_handler.php");
 connector::connect();
 $sql = "SELECT DISTINCT a.first_name, a.last_name

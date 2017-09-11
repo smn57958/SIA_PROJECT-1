@@ -23,17 +23,22 @@
  * # along with this program. If not, see <http://www.gnu.org/licenses/>.
  * #-------------------------------------------------------------------------------
  */
+error_reporting(0);
 include ("db_handler.php");
 connector::connect();
-$sql = "SELECT total_movie, genre FROM (SELECT genre, COUNT(*) AS total_movie
-FROM movies_genres
-GROUP BY genre) AS max_genre
-ORDER BY total_movie desc
-limit 2; ";
+$sql = "SELECT mg.genre, COUNT(mg.movie_id) total_number_of_movies, m.year
+FROM movies_genres mg, movies m 
+WHERE mg.movie_id=m.id
+GROUP BY mg.genre 
+HAVING COUNT(mg.movie_id)=(SELECT MAX(total_movie) 
+						FROM(SELECT genre, COUNT(*) total_movie
+							 FROM movies_genres
+							 GROUP BY genre) AS max_genre)
+ORDER BY m.year DESC, m.name ASC; ";
 $count = 0;
 $result = mysqli_query(connector::$connection, $sql);
 while ($row = mysqli_fetch_array($result)) {
-    echo "&nbspGenre&nbsp <span style='background-color:red;border-radius:10px;color:white;'>" . $row['genre'] . "</span> has total number of <span style='background-color:white;color:black;border-radius:10px'>" . $row['total_movie'] . " </span>movies";
+    echo "&nbspGenre&nbsp <span style='background-color:red;border-radius:10px;color:white;'>" . $row['genre'] . "</span> has total number of <span style='background-color:white;color:black;border-radius:10px'>" . $row['total_number_of_movies'] . " </span>movies";
     if ($count == 0)
         echo " & ";
     $count ++;

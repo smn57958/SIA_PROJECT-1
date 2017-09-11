@@ -35,143 +35,13 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-<script>
-var username=window.prompt("Username","root");
-var password=window.prompt("Password","test123");
-var dbname=window.prompt("Database name","imdb");
-if(window.XMLHttpRequest)
-		{
-			xmlhttp=new XMLHttpRequest();
-		}
-		else
-		{
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.open("GET","php/cookie.php?username="+username+"&password="+password+"&dbname="+dbname,true);
-		xmlhttp.send();
-		document.getElementById("connection").innerHTML="Hello";
-	function suggest()
-	{
-		var str=document.getElementById("squery").value;
-		var d=document.getElementById("degrees");
-		if(str=='null')
-		{
-			document.getElementbyId("suggestion").innerHTML="";
-			d.style.display='none';
-		}
-		if(window.XMLHttpRequest)
-		{
-			xmlhttp=new XMLHttpRequest();
-		}
-		else
-		{
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if(this.readyState==4 && this.status==200)
-			{
-				document.getElementById("suggestion").innerHTML=this.responseText;
-				d.style.display='block';
-				deg.style.display='block';
-				
-			}
-		}
-		xmlhttp.open("GET","php/search_actor.php?q="+str,true);
-		xmlhttp.send();
-	}
-	function first_degree()
-	{
-		var sel=document.getElementById("actorsOpt");
-		var index=sel.options[sel.selectedIndex].value;
-		if(window.XMLHttpRequest)
-		{
-			xmlhttp=new XMLHttpRequest();
-		}
-		else
-		{
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if(this.readyState==4 && this.status==200)
-			{
-				document.getElementById("firstTable").innerHTML=this.responseText;
-				//ft.style.display='block';
-			}
-		}
-		xmlhttp.open("GET","php/first_degree.php?id="+index,true);
-		xmlhttp.send();
-		second_degree();
-		third_degree();
-		fourth_degree();
-	}
-	function second_degree()
-	{
-		var sel=document.getElementById("actorsOpt");
-		var index=sel.options[sel.selectedIndex].value;
-		if(window.XMLHttpRequest)
-		{
-			xmlhttp=new XMLHttpRequest();
-		}
-		else
-		{
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if(this.readyState==4 && this.status==200)
-			{
-				document.getElementById("secondTable").innerHTML=this.responseText;
-				//ft.style.display='block';
-			}
-		}
-		xmlhttp.open("GET","php/second_degree.php?id="+index,true);
-		xmlhttp.send();
-	}
-	function third_degree()
-	{
-		if(window.XMLHttpRequest)
-		{
-			xmlhttp=new XMLHttpRequest();
-		}
-		else
-		{
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if(this.readyState==4 && this.status==200)
-			{
-				document.getElementById("thirdTable").innerHTML=this.responseText;
-				//ft.style.display='block';
-			}
-		}
-		xmlhttp.open("GET","php/third_q.php",true);
-		xmlhttp.send();
-	}
-		function fourth_degree()
-	{
-		if(window.XMLHttpRequest)
-		{
-			xmlhttp=new XMLHttpRequest();
-		}
-		else
-		{
-			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		}
-		xmlhttp.onreadystatechange=function(){
-			if(this.readyState==4 && this.status==200)
-			{
-				document.getElementById("fourthTable").innerHTML=this.responseText;
-				//ft.style.display='block';
-			}
-		}
-		xmlhttp.open("GET","php/fourth_q.php",true);
-		xmlhttp.send();
-	}
-
-	</script>
+<script src="js/dynamic.js"></script>
 </head>
-<body>
+<body onload="checkCookie()">
 	<div id="connection"><?php include ('php/db_handler.php');connector::connect();connector::discond();connector::disconnect()?></div>
+	<span style="margin: auto"><a
+		style="text-decoration: none; background-color: red; color: white; border-radius: 10px;"
+		href="./php/delete_cookies.php">&nbsp Logout &nbsp</a></span>
 	<div id="header">
 		<div class="htext">
 			<font color="red">"</font>Everything <span class="bwh">I</span> <span
@@ -183,7 +53,7 @@ if(window.XMLHttpRequest)
 	</div>
 	<div id="main">
 		<div id="qtitle">
-			#1 Choose your <span class="bwh">favorite</span> <span id="underline">Actor</span>
+			#Choose your <span class="bwh">favorite</span> <span id="underline">Actor</span>
 		</div>
 		<p>
 			Please enter first Name of the actor in the search bar : <input
@@ -197,24 +67,36 @@ if(window.XMLHttpRequest)
 	<div id="degrees">
 		<div class="firstDegree">
 			<div id="qtitle">
-				#2 <span class="bwh">First</span> Degree
+				#1 <span class="bwh">First</span> Degree
 			</div>
 			<br /> <span class="fuschia"> Movies in which your favorite Actor has
 				worked with Actor *Kevin Bacon* </span><br /> <span id="firstTable"></span>
 		</div>
 		<div class="secondDegree">
 			<div id="qtitle">
-				#3 <span class="bwh">Second</span> Degree
+				#2 <span class="bwh">Second</span> Degree
 			</div>
 			<br /> <span class="fuschia"> Actors and movies on second Degree with
 				*Kevin Bacon* </span><br /> <span id="secondTable"></span>
 		</div>
 		<div class="thirdDegree">
 			<div id="qtitle">
-				#4 <span class="bwh">Genre</span> with Maximum Number of Movies
+				#3 <span class="bwh">Genre</span> with Maximum Number of Movies
 			</div>
 			<br /> <span id="thirdTable"
 				style="font-size: 40px; background-color: black; color: white; border-radius: 20px"></span>
+		</div>
+		<div class="genreDegree">
+			<div id="qtitle">
+				#4 <span class="bwh">User Choice</span> Genre
+			</div>
+			<br />
+			<button onclick="genre_suggest()">Select Genre</button>
+			<p id="genreSuggestion"></p>
+			<button id="deg1" onclick="genrize()">Genrize!</button>
+			<br /> <br /><span class="fuschia">Actors with Maximum number of
+				movies of the above selected Genre :</span><br /> <span
+				id="absTable"></span> <br />
 		</div>
 		<div class="fourthDegree">
 			<div id="qtitle">

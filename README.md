@@ -55,7 +55,9 @@ Open Browser and navigate to localhost/CodeBusters/
 (These details are for "MYSQL" connection)
 Default values : username: root password:test123 database name: imdb
 
-2. Once the connection is successfull, page will specify that the connection was successful at the very top of the page.
+2. Once the connection is successful, page will specify that the connection was successful at the very top of the page.
+If the connection was unsuccessful, it simply means that you have entered wrong details of your mysql connection.
+Unless the connection is established, you won't be able to use the website. So make sure you enter proper connection details and database name.
 
 3. Now type in the "First Name" of your favorite actor that you wish to compare with actor Kevin Bacon.
 (Example : John)
@@ -70,6 +72,11 @@ Default values : username: root password:test123 database name: imdb
 
 8. For another actor, simply scroll up to the first question to select your favorite actor (Step 3) and repeat.
 
+9. Query that asks for actors with maximum movies in "User Preferred" Genre has two buttons, Press "Select Genre"
+A list of available genres will appear and select anyone of the genres.
+
+10. After the selection is made click on "Genrize!" button to get the output. You can try different genres by simply selecting other genres, No need to refresh.
+
 ## Authors
 
 * **Sohan M. Nipunage**	 - 	[smn57958@uga.edu](mailto:smn57958@uga.edu)
@@ -80,3 +87,9 @@ Default values : username: root password:test123 database name: imdb
 ## License
 
 This project is licensed under the GNU General Public License.
+This project can be only be used for educational purposes and you need to contact Sohan Nipunage for any use of this project, including educational purposes.
+Make sure you give credit to all the authors in any presentation/display/working/usage. For permission to include credits, please contact all the authors as above for their
+indivisual permissions.
+Any bad activities such as copying/misusing/corrupting the resources will be penalized heavily and is unlawful to do so.
+License permissions are authored by Mr. Sohan M. Nipunage. Any problem or inconsistencies should be reported to him.
+Thanks for using the application.

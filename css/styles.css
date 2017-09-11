@@ -139,11 +139,11 @@ table {
 	margin: auto;
 }
 
-.firstDegree, .secondDegree, .thirdDegree, .fourthDegree {
+.firstDegree, .secondDegree, .thirdDegree, .fourthDegree, .genreDegree {
 	width: 100%;
 	height: auto;
-	min-height: 100px; //
-	background-color: green;
+	min-height: 100px;
+	//background-color: green;
 	margin-top: 15px;
 	box-shadow: 0px 10px 10px #b5b5b5;
 	font-family: 'Oswald', sans-serif;
@@ -175,7 +175,7 @@ input[type=text] {
 	width: 130px;
 	box-sizing: border-box;
 	border: 2px solid #ccc;
-	border-radius: 4px;
+	border-radius: 50px;
 	font-size: 16px;
 	background-color: white;
 	background-image: url('searchicon.png');
@@ -187,6 +187,7 @@ input[type=text] {
 
 input[type=text]:focus {
 	width: 200px;
+	outline:none;
 }
 
 #mailto {

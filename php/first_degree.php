@@ -23,26 +23,35 @@
  * # along with this program. If not, see <http://www.gnu.org/licenses/>.
  * #-------------------------------------------------------------------------------
  */
+error_reporting(0);
 include ("db_handler.php");
 connector::connect();
 $id = ($_GET['id']);
-$sql = "SELECT DISTINCT m.name
+$name=($_GET['name']);
+$sql = "SELECT DISTINCT m.name, m.year
 FROM actors a, roles r, movies m
-WHERE a.id=r.actor_id AND m.id=r.movie_id AND a.id=" . $id . " AND r.movie_id IN (SELECT r1.movie_id 
-																									FROM roles r1
-                                                                                                    WHERE r1.actor_id=22591);";
+WHERE a.id=r.actor_id AND m.id=r.movie_id AND a.id=".$id." AND r.movie_id IN (SELECT r1.movie_id 
+																		 FROM roles r1
+															             WHERE r1.actor_id=22591) ORDER BY m.year DESC, m.name ASC;";
 $result = mysqli_query(connector::$connection, $sql);
 echo "<table>
-<th>Movie Name</th>";
+<th>Movie Name</th><th>Movie Year</th>";
 $count = 0;
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['name'] . "</td>";
+    echo "<td>" . $row['name'] . "</td><td>" . $row['year'] . "</td>";
     echo "</tr>";
     $count ++;
 }
 echo "</table><br/>";
-echo "Total number of Movies connected with Actor <b>Kevin Bacon</b> are :" . $count . "</br>";
+if($count===0)
+{
+	echo "Actor <span class='fuschia'>".$name."</span> has no Connection with Kevin Bacon";
+}
+else
+{
+	echo "Total number of Movies connected with Actor <b>Kevin Bacon</b> are :" . $count . "</br>";
+}
 connector::disconnect();
 echo "</select>";
 
